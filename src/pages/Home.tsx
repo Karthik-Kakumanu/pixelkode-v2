@@ -93,7 +93,7 @@ const ProjectCard = ({ title, category, img, link }: { title: string, category: 
   const isExternal = link.startsWith('http');
   
   // If external, use <a> tag. If internal, use <Link>
-  const Wrapper = isExternal ? 'a' : Link;
+  const Wrapper = (isExternal ? 'a' : Link) as any;
   
   // Set attributes based on link type (open external in new tab)
   const props = isExternal 

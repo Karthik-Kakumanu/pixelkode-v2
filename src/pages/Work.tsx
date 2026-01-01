@@ -135,7 +135,7 @@ const ProjectCard = ({ project, index }) => {
 
   const hasLink = project.link && project.link !== "#";
   const isExternal = hasLink && project.link.startsWith('http');
-  const Wrapper = hasLink ? (isExternal ? 'a' : Link) : 'div';
+  const Wrapper = hasLink ? (isExternal ? 'a' : Link) as any: 'div';
   const props = hasLink 
     ? (isExternal ? { href: project.link, target: "_blank", rel: "noopener noreferrer" } : { to: project.link })
     : {};
