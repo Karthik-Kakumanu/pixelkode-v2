@@ -237,7 +237,7 @@ export default function About() {
             <div className="flex flex-col items-center gap-2">
               <div className="w-12 h-1 bg-lumina-500 rounded-full mb-2" />
               <h4 className="text-white font-bold tracking-widest uppercase">PixelKode Creative</h4>
-              <p className="text-slate-500 text-sm">Est. 2025 • Bangalore, India</p>
+              <p className="text-slate-500 text-sm">Est. 2025 • Guntur, India</p>
             </div>
           </div>
         </section>

@@ -58,7 +58,7 @@ const sitemapLinks = [
 const socialLinks = [
   { name: "LinkedIn", url: "https://linkedin.com" },
   { name: "Instagram", url: "https://www.instagram.com/pixelkode.co/" },
-  { name: "Facebook", url: "https://www.facebook.com/people/PixelKodecom/61580666644143/?rdid=OVjG1GFk5OdxPPAh&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17E2qAXE4T%2F" },
+  { name: "Facebook", url: "https://www.facebook.com/people/pixelkodeco/61581103567444/?rdid=BG5LNRkbHkJ7czPn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1GqG8tb49u%2F" },
   { name: "YouTube", url: "https://www.youtube.com/channel/UCnxP_mhXmhVA-fwxfb4jWMw" },
 ];
 

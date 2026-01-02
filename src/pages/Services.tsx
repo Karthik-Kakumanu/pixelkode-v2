@@ -167,7 +167,8 @@ export default function Services() {
             </div>
             
             <div className="md:w-2/3 flex flex-wrap gap-x-8 gap-y-4 justify-center md:justify-start opacity-70">
-               {["React", "TypeScript", "Node.js", "PostgreSQL", "AWS", "Docker", "Figma", "Next.js", "GraphQL", "Tailwind"].map((tech) => (
+               {[ "React",  "TypeScript", "Node.js", "PostgreSQL", 
+    "Tailwind", "Figma", "AWS", "HTML CSS", "MYSQL", "Vercel", "Canva", "Adobe Photoshop", "CRM", "SEO", "GitHub", "VS Code", "Railway", "Render"].map((tech) => (
                   <span key={tech} className="text-lg font-mono text-slate-500 hover:text-white transition-colors cursor-default">
                      {tech}
                   </span>

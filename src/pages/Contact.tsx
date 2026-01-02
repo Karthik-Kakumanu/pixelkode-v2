@@ -1,6 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ArrowRight, Mail, MapPin, Send, Instagram, Linkedin, Facebook, Youtube, CheckCircle } from "lucide-react";
+import { 
+  ArrowRight, Mail, MapPin, Send, Instagram, Linkedin, Facebook, Youtube, 
+  CheckCircle, Phone, MessageCircle 
+} from "lucide-react";
 import PageTransition from "../components/layout/PageTransition";
 import Button from "../components/ui/Button";
 
@@ -21,11 +24,15 @@ const InputField = ({ label, type = "text", placeholder, name, required = false 
   </div>
 );
 
-const SelectField = ({ label, options, name }) => (
+// FIXED: Added default value "rightElement = null" to prevent build errors
+const SelectField = ({ label, options, name, rightElement = null }) => (
   <div className="flex flex-col gap-2 group">
-    <label className="text-xs font-bold uppercase tracking-widest text-slate-500 group-focus-within:text-lumina-500 transition-colors duration-300">
-      {label}
-    </label>
+    <div className="flex justify-between items-center">
+      <label className="text-xs font-bold uppercase tracking-widest text-slate-500 group-focus-within:text-lumina-500 transition-colors duration-300">
+        {label}
+      </label>
+      {rightElement}
+    </div>
     <div className="relative">
       <select
         name={name}
@@ -60,11 +67,12 @@ const TextAreaField = ({ label, placeholder, name, rows = 4 }) => (
   </div>
 );
 
-const SocialLink = ({ href, icon: Icon }) => (
+const SocialLink = ({ href, icon: Icon, title }) => (
   <a 
     href={href} 
     target="_blank" 
     rel="noopener noreferrer"
+    title={title}
     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300"
   >
     <Icon size={18} />
@@ -75,9 +83,15 @@ const SocialLink = ({ href, icon: Icon }) => (
 
 export default function Contact() {
   const [formState, setFormState] = useState("idle"); // idle | submitting | success | error
+  const [currency, setCurrency] = useState("INR"); // Default to INR
 
   // --- FORMSPREE INTEGRATION ---
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/mandkrka";
+
+  const budgetOptions = {
+    USD: ["$500 - $1k", "$1k - $5k", "$5k - $10k", "$10k+", "Undisclosed"],
+    INR: ["₹10k - ₹20k", "₹20k - ₹30k", "₹30k - ₹50k", "₹50k+", "Undisclosed"]
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,7 +121,7 @@ export default function Contact() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-void-950 pt-05 pb-20 relative overflow-hidden">
+      <div className="min-h-screen bg-void-950 pt-24 pb-20 relative overflow-hidden">
         
         {/* Decorative Background */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lumina-500/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
@@ -178,18 +192,18 @@ export default function Contact() {
 
               <div className="pt-8 border-t border-white/10">
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">Connect</h4>
-                <div className="flex gap-4">
-                  {/* FACEBOOK */}
-                  <SocialLink href="https://facebook.com/pixelkode.co/" icon={Facebook} />
+                <div className="flex gap-4 flex-wrap">
+                  {/* WHATSAPP: Click to chat */}
+                  <SocialLink href="https://wa.me/918897925715" icon={MessageCircle} title="WhatsApp" />
                   
-                  {/* INSTAGRAM */}
-                  <SocialLink href="https://www.instagram.com/pixelkode.co/" icon={Instagram} />
-                  
-                  {/* YOUTUBE */}
-                  <SocialLink href="https://www.youtube.com/channel/UCnxP_mhXmhVA-fwxfb4jWMw" icon={Youtube} />
-                  
-                  {/* LINKEDIN (Placeholder as per request, can be removed if not needed) */}
-                  <SocialLink href="https://linkedin.com" icon={Linkedin} />
+                  {/* PHONE CALL: Click to call */}
+                  <SocialLink href="tel:+918897925715" icon={Phone} title="Call Us" />
+
+                  {/* SOCIALS */}
+                  <SocialLink href="https://www.instagram.com/pixelkode.co/" icon={Instagram} title="Instagram" />
+                  <SocialLink href="https://www.facebook.com/people/pixelkodeco/61581103567444/" icon={Facebook} title="Facebook" />
+                  <SocialLink href="https://www.youtube.com/channel/UCnxP_mhXmhVA-fwxfb4jWMw" icon={Youtube} title="YouTube" />
+                  <SocialLink href="https://linkedin.com" icon={Linkedin} title="LinkedIn" />
                 </div>
               </div>
             </motion.div>
@@ -235,15 +249,36 @@ export default function Contact() {
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Interest Dropdown */}
                       <SelectField 
                         label="Interest" 
                         name="interest" 
                         options={["Web Development", "App Development", "UI/UX Design", "Graphic Design", "Consultancy"]} 
                       />
+                      
+                      {/* Budget Dropdown with Currency Toggle */}
                       <SelectField 
                         label="Budget" 
                         name="budget" 
-                        options={["$500 - $1k", "$1k - $5k", "$5k - $10k", "$10k+", "Undisclosed"]} 
+                        options={budgetOptions[currency]} 
+                        rightElement={
+                          <div className="flex bg-white/5 rounded-md p-0.5 mb-1 border border-white/10">
+                            <button
+                              type="button"
+                              onClick={() => setCurrency("INR")}
+                              className={`text-[10px] font-bold px-2 py-1 rounded-sm transition-all ${currency === 'INR' ? 'bg-lumina-500 text-void-950' : 'text-slate-500 hover:text-white'}`}
+                            >
+                              ₹ INR
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setCurrency("USD")}
+                              className={`text-[10px] font-bold px-2 py-1 rounded-sm transition-all ${currency === 'USD' ? 'bg-lumina-500 text-void-950' : 'text-slate-500 hover:text-white'}`}
+                            >
+                              $ USD
+                            </button>
+                          </div>
+                        }
                       />
                     </div>
 
