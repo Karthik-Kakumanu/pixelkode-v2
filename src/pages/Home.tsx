@@ -14,7 +14,7 @@ import cakerovenImg from "../assets/cakeroven.png";
 // Assume these exist based on context
 import PageTransition from "../components/layout/PageTransition";
 import Button from "../components/ui/Button";
-import HolographicCard from "../components/ui/HolographicCard";
+// import HolographicCard from "../components/ui/HolographicCard";
 import vidFile from "../assets/vid.mp4"; 
 
 // --- Motion Variants ---
@@ -88,11 +88,12 @@ const ServiceCard = ({ icon: Icon, title, desc, tags }) => (
   </motion.div>
 );
 
-const ProjectCard = ({ title, category, img, link }: { title: string, category: string, img: string, link: string }) => {
+const ProjectCard = ({ title, category, img, link }) => {
   // Check if the link is external (starts with http)
   const isExternal = link.startsWith('http');
   
   // If external, use <a> tag. If internal, use <Link>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Wrapper = (isExternal ? 'a' : Link) as any;
   
   // Set attributes based on link type (open external in new tab)
@@ -131,8 +132,8 @@ const ProjectCard = ({ title, category, img, link }: { title: string, category: 
 
 const TechTicker = () => {
   const tech = [
-    "React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", 
-    "Tailwind", "WebGL", "Three.js", "Figma", "AWS", "Docker"
+    "React",  "TypeScript", "Node.js", "PostgreSQL", 
+    "Tailwind", "Figma", "AWS", "HTML CSS", "MYSQL", "Vercel", "Canva", "Adobe Photoshop", "CRM", "SEO", "GitHub", "VS Code", "Railway", "Render"
   ];
   
   return (
@@ -255,7 +256,7 @@ export default function Home() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 z-20"
         >
-          <span className="text-[10px] uppercase tracking-[0.3em] text-slate-600 animate-pulse">Scroll</span>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-slate-600 animate-pulse"></span>
           <div className="w-[1px] h-16 bg-gradient-to-b from-slate-600 to-transparent" />
         </motion.div>
       </section>
@@ -383,30 +384,8 @@ export default function Home() {
          </div>
       </section>
 
-      {/* 4. PHILOSOPHY & ABOUT */}
-      <section className="py-24 md:py-32 px-6 md:px-20 bg-void-950 relative z-20 overflow-hidden border-b border-white/5">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div className="order-2 lg:order-1 flex flex-col gap-8">
-            <div className="relative p-10 rounded-3xl bg-white/[0.03] border border-white/10 overflow-hidden group hover:bg-white/[0.05] transition-colors duration-500">
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-lumina-500/10 rounded-full blur-[60px] pointer-events-none" />
-              <QuoteIcon />
-              <h2 className="text-3xl sm:text-4xl font-medium leading-[1.2] mb-6 text-slate-100 relative z-10">
-                We don't follow trends. We <span className="text-lumina-500">define</span> them.
-              </h2>
-              <p className="text-slate-400 text-lg leading-relaxed relative z-10">
-                PixelKode combines aesthetic purity with military-grade technical rigor. Every pixel serves a purpose; every line of code adds value.
-              </p>
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2 flex justify-center perspective-1000 w-full">
-             <HolographicCard />
-          </div>
-        </div>
-      </section>
-
       {/* 5. THE METHOD (Process) */}
-      <section className="py-32 bg-void-900 border-b border-white/5">
+      <section className="py-32 bg-void-950 border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 md:px-20">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20">
              <div>
@@ -434,7 +413,7 @@ export default function Home() {
       </section>
 
       {/* 6. CTA / FOOTER PREVIEW */}
-      <section className="py-40 px-6 relative overflow-hidden bg-void-950 flex items-center justify-center">
+      <section className="py-40 px-6 relative overflow-hidden bg-void-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.08)_0%,transparent_70%)] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -462,10 +441,3 @@ export default function Home() {
     </PageTransition>
   );
 }
-
-// Simple Quote Icon SVG
-const QuoteIcon = () => (
-   <svg className="w-8 h-8 text-lumina-500 mb-4 opacity-50" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M14.017 21L14.017 18C14.017 16.896 14.325 15.986 14.941 15.27C15.557 14.554 16.634 13.923 18.173 13.376L18.846 12.984L18.846 6.848L18.173 6.848C15.424 6.848 13.298 8.016 11.795 10.352L11.795 21L14.017 21ZM5 21L5 18C5 16.896 5.308 15.986 5.924 15.27C6.54 14.554 7.617 13.923 9.156 13.376L9.829 12.984L9.829 6.848L9.156 6.848C6.407 6.848 4.281 8.016 2.778 10.352L2.778 21L5 21Z" />
-   </svg>
-);

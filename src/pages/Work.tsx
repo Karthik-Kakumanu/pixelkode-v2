@@ -10,13 +10,14 @@ import sharmaImg from "../assets/sharma.png";
 import cakerovenImg from "../assets/cakeroven.png";
 import brahminImg from "../assets/brahmin.png";
 
-// --- Component Imports ---
-import PageTransition from "../components/layout/PageTransition";
-import Button from "../components/ui/Button";
-
+// Import local images for the carousel
 import oneImg from "../assets/1.png";
 import twoImg from "../assets/2.png";
 import threeImg from "../assets/3.png";
+
+// --- Component Imports ---
+import PageTransition from "../components/layout/PageTransition";
+import Button from "../components/ui/Button"; 
 
 // --- Data ---
 
@@ -63,7 +64,7 @@ const PROJECTS = [
     year: "2024",
     description: "The comprehensive rebranding of a creative agency, focusing on futuristic typography."
   },
-  // --- CAROUSEL PROJECT 1 ---
+  // --- POSTER PROJECT 1 (Vertical A4) ---
   {
     id: 5,
     title: "Weekend Adventures",
@@ -88,14 +89,14 @@ const PROJECTS = [
     year: "2025",
     description: "A brand identity and web platform for a traditional food distributor expanding into retail markets."
   },
-  // --- CAROUSEL PROJECT 2 ---
+  // --- POSTER PROJECT 2 (Vertical A4) ---
   {
     id: 7,
     title: "Village Chicken Campaign",
     category: "Design",
     tags: ["Social Media", "Print", "Photoshop"],
     image: [
-      
+      "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=2670&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=2576&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1594221708779-94832f4320d1?q=80&w=2664&auto=format&fit=crop"
     ],
@@ -124,6 +125,12 @@ const ProjectCard = ({ project, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isSlideshow = Array.isArray(project.image);
 
+  // --- LOGIC: Check if this is a "Poster" project (IDs 5 and 7) ---
+  const isPortrait = project.id === 5 || project.id === 7;
+  
+  // Set Aspect Ratio: Vertical (3/4) for posters, Landscape (16/10) for others
+  const aspectClass = isPortrait ? "aspect-[3/4]" : "aspect-[16/10]";
+
   useEffect(() => {
     if (isSlideshow) {
       const interval = setInterval(() => {
@@ -135,7 +142,8 @@ const ProjectCard = ({ project, index }) => {
 
   const hasLink = project.link && project.link !== "#";
   const isExternal = hasLink && project.link.startsWith('http');
-  const Wrapper = hasLink ? (isExternal ? 'a' : Link) as any: 'div';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Wrapper = (hasLink ? (isExternal ? 'a' : Link) : 'div') as any;
   const props = hasLink 
     ? (isExternal ? { href: project.link, target: "_blank", rel: "noopener noreferrer" } : { to: project.link })
     : {};
@@ -150,7 +158,10 @@ const ProjectCard = ({ project, index }) => {
       className={`group relative flex flex-col ${index % 2 === 1 ? "md:mt-24" : ""}`}
     >
       <Wrapper {...props} className={`block w-full ${hasLink ? 'cursor-pointer' : 'cursor-default'}`}>
-        <div className="relative aspect-[16/10] overflow-hidden rounded-sm bg-void-900 border border-white/5">
+        
+        {/* Dynamic Aspect Ratio Class Applied Here */}
+        <div className={`relative ${aspectClass} overflow-hidden rounded-sm bg-void-900 border border-white/5 transition-all duration-500`}>
+          
           <div className="absolute inset-0 bg-void-950/20 group-hover:bg-void-950/0 transition-colors duration-700 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-void-950 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500 z-20" />
           
@@ -242,9 +253,8 @@ export default function Work() {
     <PageTransition>
       <div className="min-h-screen bg-void-950 pb-20">
         
-        {/* 1. Header Section - SPACE REMOVED + 3D ICON */}
-        {/* Changed padding from pt-24/32 to pt-14 to remove space */}
-        <section className="pt-05 pb-10 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
+        {/* 1. Header Section */}
+        <section className="pt-14 pb-10 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
