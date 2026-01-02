@@ -9,6 +9,7 @@ import logoImg from "../assets/logo.png";
 import sharmaImg from "../assets/sharma.png";
 import cakerovenImg from "../assets/cakeroven.png";
 import brahminImg from "../assets/brahmin.png";
+import pixelImg from "../assets/pixel.png";
 
 // Import local images for the carousel
 import oneImg from "../assets/1.png";
@@ -61,7 +62,7 @@ const PROJECTS = [
     title: "PixelKode Identity",
     category: "Design",
     tags: ["Branding", "Motion", "3D"],
-    image: logoImg,
+    image: pixelImg,
     link: "https://pixelkode.netlify.app",
     year: "2024",
     description: "The comprehensive rebranding of a creative agency, focusing on futuristic typography."

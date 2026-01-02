@@ -10,6 +10,7 @@ import srestaImg from '../assets/sresta.jpg';
 import logoImg from "../assets/logo.png";
 import sharmaImg from "../assets/sharma.png";
 import cakerovenImg from "../assets/cakeroven.png";
+import pixelImg from "../assets/pixel.png";
 
 // Assume these exist based on context
 import PageTransition from "../components/layout/PageTransition";
@@ -350,7 +351,7 @@ export default function Home() {
                   <ProjectCard 
                      title="PixelKode Studio" 
                      category="Agency Portfolio"
-                     img={logoImg}
+                     img={pixelImg}
                      link="https://pixelkode.netlify.app"
                   />
                </div>
