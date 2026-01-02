@@ -121,7 +121,7 @@ export default function Contact() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-void-950 pt-24 pb-20 relative overflow-hidden">
+      <div className="min-h-screen bg-void-950 pt-05 pb-20 relative overflow-hidden">
         
         {/* Decorative Background */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-lumina-500/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2" />

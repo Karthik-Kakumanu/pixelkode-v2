@@ -95,7 +95,7 @@ export default function About() {
         <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
 
         {/* 1. Hero Section */}
-        <section className="pt-05 pb-24 px-6 md:px-20 max-w-[1400px] mx-auto relative z-10">
+        <section className="pt-10 pb-24 px-6 md:px-20 max-w-[1400px] mx-auto relative z-10">
           <motion.div 
             initial="hidden"
             animate="visible"

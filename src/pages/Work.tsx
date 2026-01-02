@@ -14,6 +14,8 @@ import brahminImg from "../assets/brahmin.png";
 import oneImg from "../assets/1.png";
 import twoImg from "../assets/2.png";
 import threeImg from "../assets/3.png";
+import fourImg from "../assets/4.png";
+import fiveImg from "../assets/5.png";
 
 // --- Component Imports ---
 import PageTransition from "../components/layout/PageTransition";
@@ -96,9 +98,8 @@ const PROJECTS = [
     category: "Design",
     tags: ["Social Media", "Print", "Photoshop"],
     image: [
-      "https://images.unsplash.com/photo-1626785774573-4b799314346d?q=80&w=2670&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=2576&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594221708779-94832f4320d1?q=80&w=2664&auto=format&fit=crop"
+      fourImg,
+      fiveImg
     ],
     link: null, 
     year: "2025",
@@ -254,7 +255,7 @@ export default function Work() {
       <div className="min-h-screen bg-void-950 pb-20">
         
         {/* 1. Header Section */}
-        <section className="pt-14 pb-10 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
+        <section className="pt-05 pb-10 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
