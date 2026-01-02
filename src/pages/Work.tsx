@@ -14,8 +14,8 @@ import brahminImg from "../assets/brahmin.png";
 import oneImg from "../assets/1.png";
 import twoImg from "../assets/2.png";
 import threeImg from "../assets/3.png";
-import fourImg from "../assets/4.png";
-import fiveImg from "../assets/5.png";
+import fourImg from "../assets/img4.png";
+import fiveImg from "../assets/img5.png";
 
 // --- Component Imports ---
 import PageTransition from "../components/layout/PageTransition";
